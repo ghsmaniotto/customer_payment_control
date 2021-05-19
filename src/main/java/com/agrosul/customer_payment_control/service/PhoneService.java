@@ -24,5 +24,8 @@ public class PhoneService {
     
     return phone;
   }
+
+  public Phone createPhone(Phone phone){
+    return phoneRepository.save(phone);
   }
 }
