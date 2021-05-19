@@ -21,4 +21,9 @@ public class PhoneController {
   public List<Phone> getPhones() {
     return phoneService.getPhones();
   }
+
+  @GetMapping(path="{phoneId}")
+  public Phone getPhone(@PathVariable("phoneId") Long phoneId) {
+    return phoneService.getPhone(phoneId);
+  }
 }
