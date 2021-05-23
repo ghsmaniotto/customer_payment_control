@@ -8,6 +8,7 @@ import com.agrosul.customer_payment_control.domain.Phone;
 import com.agrosul.customer_payment_control.service.PhoneService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,5 +45,10 @@ public class PhoneController {
     @PathVariable("phoneId") Long phoneId, @RequestBody Phone phoneBody
   ) {
     return phoneService.updatePhone(phoneId, phoneBody);
+  }
+
+  @DeleteMapping(path="{phoneId}")
+  public Phone deletePhone(@PathVariable("phoneId") Long phoneId) {
+    return phoneService.deletePhone(phoneId);
   }
 }

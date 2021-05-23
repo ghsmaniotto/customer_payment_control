@@ -43,9 +43,7 @@ public class PhoneService {
   }
 
   public Phone updatePhone(Long phoneId, Phone updatedPhone) {{
-    Phone phone = phoneRepository.findById(phoneId).orElseThrow(
-      () -> new IllegalStateException("Phone " + phoneId.toString() + " do not exists")
-    );
+    Phone phone = this.getPhone(phoneId);
 
     this.setPhoneAttributes(phone, updatedPhone);
 
@@ -53,4 +51,12 @@ public class PhoneService {
     
     return phone;
   }}
+
+  public Phone deletePhone(Long phoneId){
+    Phone phone = this.getPhone(phoneId);
+
+    phoneRepository.delete(phone);
+
+    return phone;
+  }
 }
