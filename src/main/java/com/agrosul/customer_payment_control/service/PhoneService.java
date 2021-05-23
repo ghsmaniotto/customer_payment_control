@@ -28,4 +28,29 @@ public class PhoneService {
   public Phone createPhone(Phone phone){
     return phoneRepository.save(phone);
   }
+
+  public void setPhoneAttributes(Phone originalPhone, Phone updatedPhone){
+    String newCountryCode = updatedPhone.getCountryCode();
+    String newAreaCode = updatedPhone.getAreaCode();
+    String newNumber = updatedPhone.getNumber();
+    
+    if (newCountryCode != null)
+      originalPhone.setCountryCode(newCountryCode);
+    if (newAreaCode != null)
+      originalPhone.setAreaCode(newAreaCode);
+    if (newNumber != null)
+      originalPhone.setNumber(newNumber);
+  }
+
+  public Phone updatePhone(Long phoneId, Phone updatedPhone) {{
+    Phone phone = phoneRepository.findById(phoneId).orElseThrow(
+      () -> new IllegalStateException("Phone " + phoneId.toString() + " do not exists")
+    );
+
+    this.setPhoneAttributes(phone, updatedPhone);
+
+    phoneRepository.save(phone);
+    
+    return phone;
+  }}
 }

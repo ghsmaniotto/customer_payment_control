@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -36,5 +37,12 @@ public class PhoneController {
   @PostMapping
   public Phone addPhone(@Valid @RequestBody Phone phone) {
       return phoneService.createPhone(phone);
+  }
+
+  @PutMapping(path="{phoneId}")
+  public Phone updatePhone(
+    @PathVariable("phoneId") Long phoneId, @RequestBody Phone phoneBody
+  ) {
+    return phoneService.updatePhone(phoneId, phoneBody);
   }
 }
