@@ -51,4 +51,9 @@ public class Phone extends BaseEntity {
   public void setNumber(String number) {
     this.number = number;
   }
+
+  @Override
+  public String toString() {
+    return "Phone: +" + this.countryCode + " (" + this.areaCode + ") " + this.number;
+  }
 }
