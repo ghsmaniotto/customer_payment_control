@@ -3,6 +3,8 @@ package com.agrosul.customer_payment_control.service;
 import java.util.List;
 
 import com.agrosul.customer_payment_control.domain.Phone;
+import com.agrosul.customer_payment_control.dto.phone.PhoneDTO;
+import com.agrosul.customer_payment_control.dto.phone.PhoneMapper;
 import com.agrosul.customer_payment_control.repository.PhoneRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +44,10 @@ public class PhoneService {
       originalPhone.setNumber(newNumber);
   }
 
-  public Phone updatePhone(Long phoneId, Phone updatedPhone) {{
+  public Phone updatePhone(Long phoneId, PhoneDTO phoneDTO) {{
     Phone phone = this.getPhone(phoneId);
 
-    this.setPhoneAttributes(phone, updatedPhone);
+    new PhoneMapper().updatePhoneFromDto(phoneDTO, phone);
 
     phoneRepository.save(phone);
     
