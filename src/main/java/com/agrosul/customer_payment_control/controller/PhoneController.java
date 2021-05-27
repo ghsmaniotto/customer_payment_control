@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.agrosul.customer_payment_control.domain.Phone;
+import com.agrosul.customer_payment_control.dto.phone.PhoneDTO;
 import com.agrosul.customer_payment_control.service.PhoneService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +43,9 @@ public class PhoneController {
 
   @PutMapping(path="{phoneId}")
   public Phone updatePhone(
-    @PathVariable("phoneId") Long phoneId, @RequestBody Phone phoneBody
+    @PathVariable("phoneId") Long phoneId, @Valid @RequestBody PhoneDTO dto
   ) {
-    return phoneService.updatePhone(phoneId, phoneBody);
+    return phoneService.updatePhone(phoneId, dto);
   }
 
   @DeleteMapping(path="{phoneId}")
