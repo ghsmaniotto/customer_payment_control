@@ -20,11 +20,9 @@ public class PhoneService {
   }
 
   public Phone getPhone(Long phoneId){
-    Phone phone = phoneRepository.findById(phoneId).orElseThrow(
+    return phoneRepository.findById(phoneId).orElseThrow(
       () -> new IllegalStateException("Phone " + phoneId.toString() + " do not exists")
     );
-    
-    return phone;
   }
 
   public Phone createPhone(Phone phone){
