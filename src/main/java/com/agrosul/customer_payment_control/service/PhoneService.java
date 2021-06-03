@@ -25,7 +25,9 @@ public class PhoneService {
     );
   }
 
-  public Phone createPhone(Phone phone){
+  public Phone createPhone(PhoneDTO dto){
+    Phone phone = new PhoneMapper().toPhone(dto);
+
     return phoneRepository.save(phone);
   }
 
@@ -42,7 +44,7 @@ public class PhoneService {
       originalPhone.setNumber(newNumber);
   }
 
-  public Phone updatePhone(Long phoneId, PhoneDTO phoneDTO) {{
+  public Phone updatePhone(Long phoneId, PhoneDTO phoneDTO) {
     Phone phone = this.getPhone(phoneId);
 
     new PhoneMapper().updatePhoneFromDto(phoneDTO, phone);
@@ -50,7 +52,7 @@ public class PhoneService {
     phoneRepository.save(phone);
     
     return phone;
-  }}
+  }
 
   public Phone deletePhone(Long phoneId){
     Phone phone = this.getPhone(phoneId);
