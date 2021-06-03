@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping(path = "api/v1/phones")
 public class PhoneController {
-  
   @Autowired
   private PhoneService phoneService;
 
@@ -37,8 +36,8 @@ public class PhoneController {
   }
 
   @PostMapping
-  public Phone addPhone(@Valid @RequestBody Phone phone) {
-      return phoneService.createPhone(phone);
+  public Phone addPhone(@Valid @RequestBody PhoneDTO dto) {
+      return phoneService.createPhone(dto);
   }
 
   @PutMapping(path="{phoneId}")
