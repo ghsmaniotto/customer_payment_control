@@ -2,6 +2,8 @@ package com.agrosul.customer_payment_control.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +26,10 @@ public class Phone extends BaseEntity {
   @Length(min = 8, max = 9)
   @Column(name = "number", nullable = false, length = 9)
   private String number;
+
+  @ManyToOne
+  @JoinColumn(name = "owner_id")
+  private Customer owner;
 
   public Phone(){}
 

@@ -14,6 +14,9 @@ public class Customer extends BaseEntity {
   private String email;
   private String cpf;
 
+  @OneToMany(mappedBy = "owner")
+  private List<Phone> phones;
+
   public Customer() {
   }
 
