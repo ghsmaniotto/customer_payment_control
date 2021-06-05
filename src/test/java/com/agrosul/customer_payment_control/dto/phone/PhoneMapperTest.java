@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Phone Mapper tests")
 public class PhoneMapperTest {
-  Phone phone = build_phone();
-  PhoneDTO phoneDTO = build_phoneDTO();
+  Phone phone = buildPhone();
+  PhoneDTO phoneDTO = buildPhoneDTO();
   
   @Nested
   @DisplayName("fromPhone method")
@@ -72,13 +72,13 @@ public class PhoneMapperTest {
     }
   }
 
-  Phone build_phone(){
+  Phone buildPhone(){
     Phone phone = new Phone("55", "51", "997112290");
     phone.setId(1L);
     return phone;
   }
   
-  PhoneDTO build_phoneDTO() {
+  PhoneDTO buildPhoneDTO() {
     PhoneDTO dto = new PhoneDTO("55", "51", "997112290");
     dto.setId(2L);
     return dto;
@@ -86,7 +86,7 @@ public class PhoneMapperTest {
 
   @BeforeEach
   void init() {
-    this.phone = build_phone();
-    this.phoneDTO = build_phoneDTO();
+    this.phone = buildPhone();
+    this.phoneDTO = buildPhoneDTO();
   }
 }
